@@ -5,5 +5,7 @@
     out: '../src/scripts/main-optimized.min.js', 
     generateSourceMaps: true, 
     preserveLicenseComments: false, 
-    optimize: 'none'
+    optimize: 'uglify2'
 })
+//Use this command to build 
+//node build\r.js -o build\build.config.js

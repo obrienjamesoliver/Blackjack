@@ -1,4 +1,4 @@
-﻿define(['jquery', 'uiservice', 'boardgameservice', 'configurationservice', 'boardgame', 'options'], function ($,uiService, boardGameService, configurationService, boardGame, options) {
+﻿define(['uiservice', 'boardgameservice', 'configurationservice', 'boardgame', 'options'], function (uiService, boardGameService, configurationService, boardGame, options) {
 
         var gamblers = boardGame.gamblers,
             dealer = boardGame.dealer,     
@@ -29,7 +29,7 @@
 
                 //reset everything except options.
                 boardGameService.resetBoardGame();
-                uiService.clearPlayingFields();
+
                 uiService.resetCards();
 
             },           

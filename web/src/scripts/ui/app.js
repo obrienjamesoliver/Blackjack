@@ -40,10 +40,11 @@
             
         });
         $("#btnPlayerDeal").on("click", controller.deal);
-        $('#playerFields').on("click", ['#btnPlayerDecreaseBet0, #btnPlayerDecreaseBet1, #btnPlayerDecreaseBet2'], { amount: -1 }, controller.changeBet);
-        $('#playerFields').on("click", ['#btnPlayerIncreaseBet0, #btnPlayerIncreaseBet1, #btnPlayerIncreaseBet2'], { amount: 1 }, controller.changeBet);
-        $('#playerFields').on("click", ['#btnPlayerHit0, #btnPlayerHit1, #btnPlayerHit2'], controller.hit);
-        $('#playerFields').on("click", ['#btnPlayerStand0, #btnPlayerStand1, #btnPlayerStand2'], controller.stand);
+        $('#btnPlayerDecreaseBet0, #btnPlayerDecreaseBet1, #btnPlayerDecreaseBet2').on("click", { amount: -1 }, controller.changeBet);
+        $('#btnPlayerIncreaseBet0, #btnPlayerIncreaseBet1, #btnPlayerIncreaseBet2').on("click", { amount: 1 }, controller.changeBet);
+        $('#btnPlayerHit0, #btnPlayerHit1, #btnPlayerHit2').on("click", controller.hit);
+        $('#btnPlayerStand0, #btnPlayerStand1, #btnPlayerStand2').on("click", controller.stand);
+
 
         // Switching Between UI functionality
         function showOptions() {

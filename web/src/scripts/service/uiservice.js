@@ -1,6 +1,4 @@
-﻿define(['jquery', 'hbs!templates/cardTemplate', 'hbs!templates/playerTemplate', 'boardgame', 'options', 'card'], function ($, cardTemplate, playerTemplate, boardGame, options, Card) {
-
-
+﻿define(['jquery','boardgame', 'options', 'card'], function ($, boardGame, options, Card) {
 
     var gamblers = boardGame.gamblers,
         dealer = boardGame.dealer,
@@ -13,12 +11,12 @@
 
             if (indexGambler || indexGambler === 0) {
 
-                $("#playerCardsArea" + indexGambler).append(cardTemplate(card));
+                $("#playerCardsArea" + indexGambler).append('<img id="' + card.faceValue + '" src="images/' + card.faceValue + '.png" class="card">');
 
             }
             else {
 
-                $("#dealerCardsArea").append(cardTemplate(card));
+                $("#dealerCardsArea").append('<img id="' + card.faceValue + '" src="images/' + card.faceValue + '.png" class="card">');
 
             }
 
@@ -48,18 +46,20 @@
         },
         initializePlayingFields = function () {
 
+            //hide all gamblerfields
+            for (var indexPlayerField = 0; indexPlayerField < 3; indexPlayerField++) {
+
+                $("#playerField" + indexPlayerField).hide();
+
+            }
+
             //show only gamblerfields for the number of players in options
             for (var indexGambler = 0; indexGambler < options.numberOfPlayers; indexGambler += 1) {
 
-                $("#playerFields").append(playerTemplate({indexGambler: indexGambler}));
+                $("#playerField" + indexGambler).show();
 
             }
-        
-        },
-        clearPlayingFields = function () {
-            
-            $("#playerFields").empty();
- 
+
         },
         getCustomOptions = function () {
 
@@ -147,7 +147,6 @@
         populateGamblerSummary: populateGamblerSummary,
         populateDealerSummary: populateDealerSummary,
         initializePlayingFields: initializePlayingFields,
-        clearPlayingFields: clearPlayingFields,
         getCustomOptions: getCustomOptions,
         populateOptions: populateOptions,
         dealCards: dealCards,
