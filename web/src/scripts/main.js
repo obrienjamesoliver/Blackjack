@@ -16,7 +16,9 @@
         'uiservice': 'service/uiservice',
         'boardgameservice': 'service/boardgameservice',
         'controller': 'ui/controller',
-        'app': 'ui/app',   
+        'app': 'ui/app',
+        'hbs': '../../build/node_modules/require-handlebars-plugin/hbs',
+        'templates': '../templates'
     }
 });
 

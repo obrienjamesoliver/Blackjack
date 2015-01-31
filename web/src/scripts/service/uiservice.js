@@ -1,4 +1,4 @@
-﻿define(['jquery','boardgame', 'options', 'card'], function ($, boardGame, options, Card) {
+﻿define(['jquery', 'hbs!templates/cardTemplate', 'boardgame', 'options', 'card'], function ($, cardTemplate,  boardGame, options, Card) {
 
     var gamblers = boardGame.gamblers,
         dealer = boardGame.dealer,
@@ -11,12 +11,12 @@
 
             if (indexGambler || indexGambler === 0) {
 
-                $("#playerCardsArea" + indexGambler).append('<img id="' + card.faceValue + '" src="images/' + card.faceValue + '.png" class="card">');
+                $("#playerCardsArea" + indexGambler).append(cardTemplate(card));
 
             }
             else {
 
-                $("#dealerCardsArea").append('<img id="' + card.faceValue + '" src="images/' + card.faceValue + '.png" class="card">');
+                $("#dealerCardsArea").append(cardTemplate(card));
 
             }
 
