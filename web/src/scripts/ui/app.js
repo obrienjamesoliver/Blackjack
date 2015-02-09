@@ -2,17 +2,17 @@
 
     $(document).ready(function () {
         
-        var optionsSection = $("#optionsSection"),
-            gameSection = $("#gameSection"),
+        var optionsContent = $("#optionsContent"),
+            gameContent = $("#gameContent"),
             topNavigation = $("#topNavigation");                              
 
         //Initialize UI
-        optionsSection.hide();
-        gameSection.hide();
+        optionsContent.hide();
+        gameContent.hide();
         
 
         //Options Events              
-        $("#btnOptions").on("click", function () {
+        $("#lnkOptions").on("click", function () {
 
             showOptions();
             controller.populateOptions();
@@ -27,7 +27,7 @@
         });
 
         //BoardGame events
-        $("#btnPlay").on("click", function () {
+        $("#lnkPlay").on("click", function () {
             
             showBoardGame();  
             controller.playGame();
@@ -50,27 +50,27 @@
         function showOptions() {
 
             topNavigation.hide();
-            optionsSection.show();
+            optionsContent.show();
 
         }
 
         function hideOptions() {
 
             topNavigation.show();
-            optionsSection.hide();
+            optionsContent.hide();
 
         }
 
         function hideBoardgame() {
 
-            gameSection.hide();
+            gameContent.hide();
             topNavigation.show();                
 
         }
         
         function showBoardGame(){
 
-            gameSection.show();
+            gameContent.show();
             topNavigation.hide();
 
         }       
