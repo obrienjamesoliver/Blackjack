@@ -14,7 +14,7 @@ body {
 
 /*-----HEADER -----*/
 #headerWrapper {
-	background-color: #009900;
+	background-color: #3B4044;
 }
 header {
 	padding: 1em 2% .5em 2%;
@@ -33,7 +33,7 @@ header h2 {
 
 #navWrapper {
 
-    background-color: #979791;
+    background-color: #C4C6C7;
 }
 
 nav ul {
@@ -58,9 +58,71 @@ nav ul li a {
     border-radius:  1em;
 }
 
-    nav ul li.active a {
-            background-color: forestgreen;    
-    }
+nav ul li.active a {
+        background-color: rgba(0,0,0,0.4);    
+}
+
+/*----- Content -----*/
+#contentWrapper  {
+	background-color: #ffffff;
+}
+
+#contentWrapper .row:after{
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/*----- Columns ----*/
+
+.column-10, .column-9, .column-2, .column-1 {
+    padding: .5em 2%;
+    margin: 1%;
+    border: .12em solid #000000;
+    color: #000000;
+    
+}
+
+.column-1 {
+    border: 0;
+}
+.column-2 {
+    background-color: #D8D9DA;
+}
+
+.column-2 > div {
+    display: inline;    
+    margin-left: 2%; 
+    white-space: nowrap;    
+}
+
+.column-10, .column-9 {    
+    background-color: #33CC33;
+    height: 7em;
+}
+
+.column-12 {
+    padding: .5em 2%;
+    margin: 1%;
+}
+
+.gamePlayerColumns
+{
+    padding: .5em 2%;
+    margin: 2%;
+    background-color: #3B4044;
+    border: .1em solid black;
+}
+
+button {
+    padding: .2em 0;
+    text-align: center;
+    font-weight: 300;
+    margin: .1em 0;
+    padding: .5em;
+    border-radius:  1em;
+}
 
 
 /*----- FOOTER -----*/
@@ -80,3 +142,4 @@ footer a {color: #fff;}
   display: table;
   clear: both;
 }
+

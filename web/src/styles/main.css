@@ -1,38 +1,4 @@
-﻿body {
-}
-
-.playerSummary {
-  background-color: #ffffc0;
-  border-color:  #006000 #90f090 #90f090 #006000;
-  border-style: solid;
-  border-width: 1px;
-  clear: right;
-  color: #000000;
-  float: right;
-  font-family: "Times New Roman", serif;
-  font-size: 11pt;
-  font-weight: bold;
-  margin-bottom: .5em;
-  padding: .1em;
-  text-align: center;
-  width: 12em;
-}
-
-.playingField {
-  border-color:  #208020 #60c060 #60c060 #208020;
-  border-style: solid;
-  border-width: 1px;
-  color: #000000;
-  margin-bottom: 8px;
-  padding: 4px;
-  text-align: left;
-}
-
-.cardArea {
-  font-size: 20pt;
-  height: 6em;
-  position: relative;
-}
+﻿
 
 div.club2 {
    content:url(/images/club2.png);

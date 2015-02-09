@@ -44,7 +44,7 @@
         <div id="navWrapper">
             <nav>
                 <ul class="clearfix">
-                    <li><a href="index.html" class="active">HOME</a></li>
+                    <li class="active"><a href="index.html">HOME</a></li>
                     <li><a id="lnkOptions" href="#">OPTIONS</a></li>   
                     <li><a id="lnkPlay" href="#">PLAY</a></li>                  
                 </ul>
@@ -53,99 +53,137 @@
         
         <div id="contentWrapper">
 
-                <div id="startContent" class="row">
-                    <div >
+            <div id="startContent">
+                <div  class="row">
+                    <div class="column-12">                    
                         <p>This a the Game Of BlackJack built with Javascript. Please check it out and feel free to give feedback.</p>
-                    </div> 
+                    </div> <!-- end of the row -->
                 </div> <!-- end of the row -->
-        <div id="gameContent">
-
-            <div id="dealer" class="playingField">
-            
-                <div id="dealerSummary">
-                    <div id="dealerId" class="playerSummary">Dealer</div>
-                    <div id="dealerScore" class="playerSummary">1</div>                
-                </div>
-                <div id="dealerCardsArea" class="cardArea">
-                </div>
 
             </div>
+            <div id="gameContent">
+                <div class="gamePlayerColumns">
+                    <div class="row">
+                        <div class="column-2">
+                            <div id="dealerId" class="playerSummary">Dealer</div>
+                            <div id="dealerScore" class="playerSummary"></div>                
+                        </div> <!-- end of column -->
+                        <div id="dealerCardsArea" class="column-10 cardArea">                        
+                        </div> <!-- end of column -->
+                    </div> <!-- end of row -->
+                </div>
+                <div id="playerField0" class="row">
 
-            <div id="playerField0" class="playingField">
+                    <div class="gamePlayerColumns">
+
+                        <div class="column-2">
+                            <div id="playerId0" class="playerSummary">Player 1</div>
+                            <div id="playerScore0" class="playerSummary"></div>
+                            <div id="playerBet0" class="playerSummary"></div>
+                            <div id="playerCredits0" class="playerSummary"></div>
+                            <div id="playerResult0" class="playerSummary"></div>
+                        </div>   <!-- end of column -->             
+ 
+                        <div id="playerCardsArea0" class="column-9 cardArea">                           
+                        </div> <!-- end of column -->
+
+                        <div class="column-1">
+                            <button type="button" id="btnPlayerHit0">Hit</button>
+                            <button type="button" id="btnPlayerStand0">Stand</button>
+                            <button type="button" id="btnPlayerIncreaseBet0">Increase Bet</button>
+                            <button type="button" id="btnPlayerDecreaseBet0">Decrease Bet</button>
+                        </div><!-- end of column -->
+
+                    </div>
+                </div> <!-- end of row -->
+
+                <div id="playerField1" class="row">
+                    
+                    <div class="gamePlayerColumns">
+                        <div class="column-2">
+                            <div id="playerId1" class="playerSummary">Player 2</div>
+                            <div id="playerScore1" class="playerSummary"></div>
+                            <div id="playerBet1" class="playerSummary"></div>
+                            <div id="playerCredits1" class="playerSummary"></div>
+                            <div id="playerResult1" class="playerSummary"></div>
+                        </div> <!-- end of column -->
+                    
+                        <div class="column-9">
+                            <div id="playerCardsArea1" class="cardArea">
+                            </div>   
+                        </div> <!-- end of column -->
+                    
+                        <div class="column-1">
+                        <button type="button" id="btnPlayerHit1">Hit</button>
+                        <button type="button" id="btnPlayerStand1">Stand</button>
+                        <button type="button" id="btnPlayerIncreaseBet1">Increase Bet</button>
+                        <button type="button" id="btnPlayerDecreaseBet1">Decrease Bet</button> 
+                    </div> <!-- end of column -->
+                    </div>
+                </div> <!-- end of row -->
+
+                <div id="playerField2" class="row">
+                    <div class="gamePlayerColumns">
+                         
+                        <div class="column-2">
+                            <div id="playerId2" class="playerSummary">Player 3</div>
+                            <div id="playerScore2" class="playerSummary"></div>
+                            <div id="playerBet2" class="playerSummary"></div>
+                            <div id="playerCredits2" class="playerSummary"></div>
+                            <div id="playerResult2" class="playerSummary"></div>
+                         </div> <!-- end of column -->
+                        
+                        <div class="column-9">
+                             <div id="playerCardsArea2" class="cardArea">
+                            </div>
+                         </div> <!-- end of column -->
+                    
+                        <div class="column-1">
+                        <button type="button" id="btnPlayerHit2">Hit</button>
+                        <button type="button" id="btnPlayerStand2">Stand</button>
+                        <button type="button" id="btnPlayerIncreaseBet2">Increase Bet</button>
+                        <button type="button" id="btnPlayerDecreaseBet2">Decrease Bet</button> 
+                    </div> <!-- end of column -->                       
+                    
+                    </div>
+                </div> <!-- end of row -->
+                
+                <div id="gameControls" class="row">
+                    <div class="column-12">
+                        <button type="button" id="btnPlayerDeal">Deal</button>
+                        <button type="button" id="btnQuitGame">Quit</button>
+                    </div> <!-- end of column -->
+                </div> <!-- end of row -->
             
-                <div id="playerSummary0">
-                    <div id="playerId0" class="playerSummary">Player 1</div>
-                    <div id="playerScore0" class="playerSummary"></div>
-                    <div id="playerBet0" class="playerSummary"></div>
-                    <div id="playerCredits0" class="playerSummary"></div>
-                    <div id="playerResult0" class="playerSummary"></div>
-                </div>
-                <div id="playerCardsArea0" class="cardArea">
-                </div>
-                <button type="button" id="btnPlayerHit0">Hit</button>
-                <button type="button" id="btnPlayerStand0">Stand</button>
-                <button type="button" id="btnPlayerIncreaseBet0">Increase Bet</button>
-                <button type="button" id="btnPlayerDecreaseBet0">Decrease Bet</button>
-            
-            </div>
-            <div id="playerField1" class="playingField">
-            
-                <div id="playerSummary1">
-                    <div id="playerId1" class="playerSummary">Player 2</div>
-                    <div id="playerScore1" class="playerSummary"></div>
-                    <div id="playerBet1" class="playerSummary"></div>
-                    <div id="playerCredits1" class="playerSummary"></div>
-                    <div id="playerResult1" class="playerSummary"></div>
-                </div>
-                <div id="playerCardsArea1" class="cardArea">
-                </div>      
-                 <button type="button" id="btnPlayerHit1">Hit</button>
-                <button type="button" id="btnPlayerStand1">Stand</button>
-                <button type="button" id="btnPlayerIncreaseBet1">Increase Bet</button>
-                <button type="button" id="btnPlayerDecreaseBet1">Decrease Bet</button>      
-            </div>
-            <div id="playerField2" class="playingField">
-            
-                <div id="playerSummary2">
-                    <div id="playerId2" class="playerSummary">Player 3</div>
-                    <div id="playerScore2" class="playerSummary"></div>
-                    <div id="playerBet2" class="playerSummary"></div>
-                    <div id="playerCredits2" class="playerSummary"></div>
-                    <div id="playerResult2" class="playerSummary"></div>
-                </div>
-                <div id="playerCardsArea2" class="cardArea">
-                </div>
-                <button type="button" id="btnPlayerHit2">Hit</button>
-                <button type="button" id="btnPlayerStand2">Stand</button>
-                <button type="button" id="btnPlayerIncreaseBet2">Increase Bet</button>
-                <button type="button" id="btnPlayerDecreaseBet2">Decrease Bet</button>           
-            </div>
-            <div id="gameControls">
-                <button type="button" id="btnPlayerDeal">Deal</button>
-                <button type="button" id="btnQuitGame">Quit</button>
             </div>
 
-    </div>
+            
 
-    <section id="optionsContent">
+            <div id="optionsContent">
         
-        <label for="numPlayers">Number of players(1-3)</label>
-        <input type="text" id="numPlayers" /><br />
-        <label for="numberOfDecks">Number of decks</label>
-        <input type="text" id="numberOfDecks" /><br />
-        <label for="maxBet">Maximum bet(1-20)</label>
-        <input type="text" id="maxBet" /><br />
-        <label for="minBet">Minimum bet(1-20)</label>
-        <input type="text" id="minBet" /><br />
-        <label for="startingCredits">Starting credits</label>
-        <input type="text" id="startingCredits" /><br />
-        <div id="optionsControls">
-            <button type="button" id="btnSaveOptions">Save Options</button>
-            <button type="button" id="btnCancelOptions">Cancel</button>
-        </div>
-     </section>
+                <label for="numPlayers">Number of players(1-3)</label>
+                <input type="text" id="numPlayers" /><br />
+                <label for="numberOfDecks">Number of decks</label>
+                <input type="text" id="numberOfDecks" /><br />
+                <label for="maxBet">Maximum bet(1-20)</label>
+                <input type="text" id="maxBet" /><br />
+                <label for="minBet">Minimum bet(1-20)</label>
+                <input type="text" id="minBet" /><br />
+                <label for="startingCredits">Starting credits</label>
+                <input type="text" id="startingCredits" /><br />
+                <div id="optionsControls">
+                    <button type="button" id="btnSaveOptions">Save Options</button>
+                    <button type="button" id="btnCancelOptions">Cancel</button>
+                </div>
+             </div>
 
         </div><!-- end of content wrapper -->  
+
+        <div id="footerWrapper">
+            <footer>
+            <p> Author &bull; James O'Brien  &bull; </p>
+            </footer>
+        </div><!-- end of footer wrapper --> 
 
     <script src="scripts/libraries/require.js" data-main="scripts/main-optimized.min"></script>  
      
