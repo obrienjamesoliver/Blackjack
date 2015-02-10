@@ -21,14 +21,14 @@ header {
 }
 
 header h1 {
-	font-size: 2.1em;
+	font-size: 1.2em;
 	color: #fff;
 }
 header h2 {
 	font-size: .9em;
 	font-weight: 300;
 	color: #ddd;
-	margin-top: .75em;
+	margin-top: .5em;
 }
 
 #navWrapper {
@@ -38,24 +38,24 @@ header h2 {
 }
 
 nav ul {
-    padding: 1em 0;
+    padding: .2em 0;
 }
 
 nav ul li {
-    margin: 0 2%;
-    width: 28%;
+    margin: 0 1%;
+    width: 30%;
     float: left;
 }
 
 nav ul li a {
     display: block;
     text-align: center;
-    font-weight: 600;
+    font-weight: 400;
     text-decoration: none;
     color: #fff;
     background-color: rgba(0,0,0,0.15);
-    margin: .2em 0;
-    padding: .6em 0;
+    margin: .2em 1%;
+    padding: .2em 0;
     border-radius:  1em;
 }
 
@@ -105,9 +105,6 @@ nav ul li.active a {
     height: 6em;
 }
 
-.cardArea img {
-    height: 4em
-}
 
 .column-12 {
     padding: .5em 2%;
@@ -143,10 +140,23 @@ footer {
 }
 footer a {color: #fff;}
 
+/*------ Cards -------*/
+.cardArea img {
+    height: 4em
+}
+
+.card {
+
+    margin: .1em;
+}
+
+
 /* ----- OTHER STUFF ----*/
 .clearfix:after {
   content: "";
   display: table;
   clear: both;
 }
+
+
 
