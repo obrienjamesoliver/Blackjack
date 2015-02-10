@@ -5,7 +5,7 @@
         <meta name="description" content="Blackjack created using javascript">
 		<meta name="keywords" content="Blackjack, JavaScript">
         <meta name="author" content="James O'Brien">
-        
+
         <title>Blackjack created with Javascript</title>
         
         <!-- TELLS PHONES NOT TO LIE ABOUT THEIR WIDTH -->
@@ -44,9 +44,9 @@
         <div id="navWrapper">
             <nav>
                 <ul class="clearfix">
-                    <li class="active"><a href="index.html">HOME</a></li>
+                    <li><a id="lnkHome" href="#">HOME</a></li>
                     <li><a id="lnkOptions" href="#">OPTIONS</a></li>   
-                    <li><a id="lnkPlay" href="#">PLAY</a></li>                  
+                    <li><a id="lnkPlay" href="#">NEW GAME</a></li>                  
                 </ul>
             </nav>
         </div><!-- end of navigation wrapper --> 
@@ -62,16 +62,18 @@
 
             </div>
             <div id="gameContent">
-                <div class="gamePlayerColumns">
+                
                     <div class="row">
-                        <div class="column-2">
-                            <div id="dealerId" class="playerSummary">Dealer</div>
-                            <div id="dealerScore" class="playerSummary"></div>                
-                        </div> <!-- end of column -->
-                        <div id="dealerCardsArea" class="column-10 cardArea">                        
-                        </div> <!-- end of column -->
+                        <div class="gamePlayerColumns">
+                            <div class="column-2">
+                                <div id="dealerId" class="playerSummary">Dealer</div>
+                                <div id="dealerScore" class="playerSummary"></div>                
+                            </div> <!-- end of column -->
+                            <div id="dealerCardsArea" class="column-10 cardArea">                        
+                            </div> <!-- end of column -->
+                        </div>
                     </div> <!-- end of row -->
-                </div>
+
                 <div id="playerField0" class="row">
 
                     <div class="gamePlayerColumns">
@@ -95,6 +97,7 @@
                         </div><!-- end of column -->
 
                     </div>
+
                 </div> <!-- end of row -->
 
                 <div id="playerField1" class="row">
@@ -114,11 +117,11 @@
                         </div> <!-- end of column -->
                     
                         <div class="column-1">
-                        <button type="button" id="btnPlayerHit1">Hit</button>
-                        <button type="button" id="btnPlayerStand1">Stand</button>
-                        <button type="button" id="btnPlayerIncreaseBet1">Increase Bet</button>
-                        <button type="button" id="btnPlayerDecreaseBet1">Decrease Bet</button> 
-                    </div> <!-- end of column -->
+                            <button type="button" id="btnPlayerHit1">Hit</button>
+                            <button type="button" id="btnPlayerStand1">Stand</button>
+                            <button type="button" id="btnPlayerIncreaseBet1">Increase Bet</button>
+                            <button type="button" id="btnPlayerDecreaseBet1">Decrease Bet</button> 
+                        </div> <!-- end of column -->
                     </div>
                 </div> <!-- end of row -->
 
@@ -139,11 +142,11 @@
                          </div> <!-- end of column -->
                     
                         <div class="column-1">
-                        <button type="button" id="btnPlayerHit2">Hit</button>
-                        <button type="button" id="btnPlayerStand2">Stand</button>
-                        <button type="button" id="btnPlayerIncreaseBet2">Increase Bet</button>
-                        <button type="button" id="btnPlayerDecreaseBet2">Decrease Bet</button> 
-                    </div> <!-- end of column -->                       
+                            <button type="button" id="btnPlayerHit2">Hit</button>
+                            <button type="button" id="btnPlayerStand2">Stand</button>
+                            <button type="button" id="btnPlayerIncreaseBet2">Increase Bet</button>
+                            <button type="button" id="btnPlayerDecreaseBet2">Decrease Bet</button> 
+                        </div> <!-- end of column -->                       
                     
                     </div>
                 </div> <!-- end of row -->
@@ -160,21 +163,23 @@
             
 
             <div id="optionsContent">
-        
-                <label for="numPlayers">Number of players(1-3)</label>
-                <input type="text" id="numPlayers" /><br />
-                <label for="numberOfDecks">Number of decks</label>
-                <input type="text" id="numberOfDecks" /><br />
-                <label for="maxBet">Maximum bet(1-20)</label>
-                <input type="text" id="maxBet" /><br />
-                <label for="minBet">Minimum bet(1-20)</label>
-                <input type="text" id="minBet" /><br />
-                <label for="startingCredits">Starting credits</label>
-                <input type="text" id="startingCredits" /><br />
-                <div id="optionsControls">
-                    <button type="button" id="btnSaveOptions">Save Options</button>
-                    <button type="button" id="btnCancelOptions">Cancel</button>
-                </div>
+                    <div class="row">
+                        <div class="column-12">
+                            <label for="numPlayers">Number of players(1-3)</label>
+                            <input type="text" id="numPlayers" /><br />
+                            <label for="numberOfDecks">Number of decks</label>
+                            <input type="text" id="numberOfDecks" /><br />
+                            <label for="maxBet">Maximum bet(1-20)</label>
+                            <input type="text" id="maxBet" /><br />
+                            <label for="minBet">Minimum bet(1-20)</label>
+                            <input type="text" id="minBet" /><br />
+                            <label for="startingCredits">Starting credits</label>
+                            <input type="text" id="startingCredits" /><br />
+                            <div id="optionsControls">
+                                <button type="button" id="btnSaveOptions">Save Options</button>                   
+                            </div>
+                        </div> <!-- end of column --> 
+                    </div> <!-- end of row --> 
              </div>
 
         </div><!-- end of content wrapper -->  
@@ -185,7 +190,7 @@
             </footer>
         </div><!-- end of footer wrapper --> 
 
-    <script src="scripts/libraries/require.js" data-main="scripts/main-optimized.min"></script>  
+    <script src="scripts/libraries/require.js" data-main="scripts/main"></script>  
      
         
 </body>

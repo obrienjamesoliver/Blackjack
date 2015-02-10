@@ -12,7 +12,7 @@
         margin: 0;
     }
 
-        nav ul li a {
+    nav ul li a {
         /*remove phone effects */
         margin: 0;
         background-color: transparent;
@@ -23,8 +23,15 @@
         border-radius: 0;
         border-right: solid 1px rgba(0,0,0,0.4);
         
-        }
+    }
 
+.column-10, .column-9 {    
+    background-color: #33CC33;
+    height: 8em;
+}
 
+.cardArea img {
+    height: 7em
+}
 
 } /*end of the media query */

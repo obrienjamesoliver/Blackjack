@@ -34,6 +34,7 @@ header h2 {
 #navWrapper {
 
     background-color: #C4C6C7;
+    white-space: nowrap;
 }
 
 nav ul {
@@ -94,12 +95,18 @@ nav ul li.active a {
 .column-2 > div {
     display: inline;    
     margin-left: 2%; 
-    white-space: nowrap;    
+    white-space: nowrap; 
+    font-size: .7em;  
+    font-weight: 600; 
 }
 
 .column-10, .column-9 {    
     background-color: #33CC33;
-    height: 7em;
+    height: 6em;
+}
+
+.cardArea img {
+    height: 4em
 }
 
 .column-12 {

@@ -4,38 +4,44 @@
         
         var optionsContent = $("#optionsContent"),
             gameContent = $("#gameContent"),
-            topNavigation = $("#topNavigation");                              
+            startContent = $("#startContent");
 
         //Initialize UI
-        optionsContent.hide();
-        gameContent.hide();
+        showStartContent();
         
 
         //Options Events              
         $("#lnkOptions").on("click", function () {
 
-            showOptions();
+            showOptionsContent();
             controller.populateOptions();
+            return false;
 
         });
-        $("#btnCancelOptions").on("click", hideOptions);
+
         $("#btnSaveOptions").on("click", function () {
 
-            hideOptions();
+            showStartContent();
             controller.saveOptions();
-
         });
 
+
         //BoardGame events
+        $("#lnkHome").on("click", function () {
+            showStartContent();
+            return false;
+        });
         $("#lnkPlay").on("click", function () {
             
-            showBoardGame();  
+            showGameContent();
+            controller.quitGame();
             controller.playGame();
+            return false;
 
         });
         $("#btnQuitGame").on("click", function () {
 
-            hideBoardgame();
+            showStartContent();
             controller.quitGame();
             
         });
@@ -47,32 +53,28 @@
 
 
         // Switching Between UI functionality
-        function showOptions() {
+        function showOptionsContent() {
 
-            topNavigation.hide();
+            startContent.hide();
+            gameContent.hide();
             optionsContent.show();
 
         }
 
-        function hideOptions() {
 
-            topNavigation.show();
+        function showStartContent() {
+
+            startContent.show();
+            gameContent.hide();
             optionsContent.hide();
 
         }
-
-        function hideBoardgame() {
-
-            gameContent.hide();
-            topNavigation.show();                
-
-        }
         
-        function showBoardGame(){
+        function showGameContent(){
 
+            startContent.hide();
             gameContent.show();
-            topNavigation.hide();
-
+            optionsContent.hide();
         }       
      
 

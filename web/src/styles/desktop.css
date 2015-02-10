@@ -2,8 +2,20 @@
 
     header, nav, .gamePlayerColumns, .row, footer {
         max-width: 1140px;
+    }
+
+    .row, .gamePlayerColumns, footer {
+        margin: .1em auto;
+    }
+
+    header {
         margin: 0 auto;
     }
+
+    nav {
+        margin: 0 auto;
+    }
+
 
     nav ul li a {
         transition: background .3s linear;
@@ -12,6 +24,21 @@
     nav ul li a:hover {
         background-color: #ff7720;
     }
+
+    .column-2 {    
+        float:right;
+        height: 8em;
+        width: 14%;
+    }
+
+    .column-2 > div {
+        display: block;    
+        margin-left: 2%; 
+        white-space: nowrap; 
+        font-size: 1em;  
+        font-weight: 600; 
+
+}
 
 
 } /*end of the media query */
