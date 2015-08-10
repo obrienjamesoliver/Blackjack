@@ -1,2 +1,2 @@
 # Blackjack
-Blackjack - Javascript Implementation
+Blackjack - Responsive web design and JavasScript implementation
