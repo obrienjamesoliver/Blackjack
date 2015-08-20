@@ -110,6 +110,7 @@
 
                 _populateAllGamblersSummaries();
                 uiService.populateDealerSummary(dealer.hand.score);
+                uiService.enableGamblerBetButtons();
                     
             },
             _populateAllGamblersSummaries = function () {
