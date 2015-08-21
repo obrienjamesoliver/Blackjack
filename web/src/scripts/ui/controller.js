@@ -21,8 +21,8 @@
                 _populateAllGamblersSummaries();
 
                 uiService.populateDealerSummary(0);
-
-                uiService.enableGamblerBetButtons();
+                uiService.toggleAllGamblerButtons();
+                uiService.toggleQuitDeal(true);
 
             },            
             quitGame = function () {
@@ -47,7 +47,7 @@
                 _populateAllGamblersSummaries();
                 uiService.populateDealerSummary(0);
 
-                uiService.disableGamblerBetButtons();
+                uiService.toggleAllGamblerButtons();
             },
             changeBet = function (event) {
 
@@ -87,7 +87,7 @@
 
                 _populateGamblerSummary(indexGambler);
 
-                uiService.disableGamblerButtons(event);
+                uiService.toggleAllGamblerButtons();
 
                 if (boardGameService.isDealersTurn()) {
 
@@ -104,13 +104,26 @@
                 uiService.populateDealerSummary(dealer.hand.score);
 
                 boardGameService.playDealer();
-                                
+                uiService.populateDealerSummary(dealer.hand.score);
+
                 // Update Credits based on Results
                 boardGameService.calculateCredits();
 
+                uiService.toggleAllGamblerButtons();
+               
+
+                //Check if game over
+                if (boardGameService.checkGameOver()) {
+                    
+                    uiService.toggleQuitDeal(false);
+                    alert("Game over");
+                }
+                
                 _populateAllGamblersSummaries();
-                uiService.populateDealerSummary(dealer.hand.score);
-                uiService.enableGamblerBetButtons();
+
+                
+               
+                
                     
             },
             _populateAllGamblersSummaries = function () {

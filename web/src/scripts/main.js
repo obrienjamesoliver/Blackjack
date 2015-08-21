@@ -4,6 +4,7 @@
 
         'jquery': 'libraries/jquery-1.11.1.min',
         'configurationservice': 'service/configurationservice',
+        'gamblerService' : 'service/gamblerservice',
         'card': 'model/card',
         'hand': 'model/hand',
         'dealershoe': 'model/dealerShoe',

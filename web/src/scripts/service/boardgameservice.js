@@ -28,13 +28,18 @@
 
             //Deal initial gambler cards, calculate score and set playing status
             for (var indexGambler = 0; indexGambler < gamblers.length; indexGambler += 1) {
+                
+                if (gamblers[indexGambler].status !== configurationService.GAMBLERSTATUSMESSAGES.GAMEOVER) {
+                    for (var index = 0; index < 2; index += 1) {
+                        gamblers[indexGambler].hand.cards[index] = dealerShoeService.deal();
+                        gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.PLAYING;
+                    }
 
-                for (var index = 0; index < 2; index += 1) {
-                    gamblers[indexGambler].hand.cards[index] = dealerShoeService.deal();
-                    gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.PLAYING;
+                    handService.calculateScore(gamblers[indexGambler].hand);
                 }
-
-                handService.calculateScore(gamblers[indexGambler].hand);
+                else {
+                    //hide the player field
+                }
 
             }
 
@@ -82,6 +87,7 @@
         changeBet = function (amount, gambler) {
 
             gambler.bet += amount;
+            uiService.toggleAllGamblerButtons();
 
         },       
         isDealersTurn = function () {
@@ -110,8 +116,14 @@
 
             //reset gambler hands
             for (var indexGambler = 0; indexGambler < gamblers.length; indexGambler += 1) {
+                if (gamblers[indexGambler].status !== configurationService.GAMBLERSTATUSMESSAGES.GAMEOVER) {
+                    gamblers[indexGambler].reset();
+                }
+                else {
 
-                gamblers[indexGambler].reset();
+                    gamblers[indexGambler].hand.reset();
+                    gamblers[indexGambler].hasPlayed = true;
+                }
 
             }
 
@@ -124,31 +136,35 @@
             var allGamblersBust = true, indexGambler = 0;            
 
             for (indexGambler = 0; indexGambler < gamblers.length; indexGambler++) {
-                allGamblersBust = allGamblersBust && (gamblers[indexGambler].hand.score > 21);
+                if (gamblers[indexGambler].status !== configurationService.GAMBLERSTATUSMESSAGES.GAMEOVER) {
+                    allGamblersBust = allGamblersBust && (gamblers[indexGambler].hand.score > 21);
+                }
             }
 
             if (allGamblersBust) {
 
                 //Populate all gamblers with LOSER message
                 for (indexGambler = 0; indexGambler < gamblers.length; indexGambler++) {
-
-                    gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.LOSER;
+                    if (gamblers[indexGambler].status !== configurationService.GAMBLERSTATUSMESSAGES.GAMEOVER) {
+                        gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.LOSER;
+                    }
 
                 }
             }//blackJack consideration : Check if dealer has a natural blackjack. If another player has a natural blackjack then display Push(tie). Don't discount credits. If they don't then they lose
             else if (dealer.hand.score === 21 && dealer.hand.cards.length === 2) {
 
                 for (indexGambler = 0; indexGambler < gamblers.length; indexGambler++) {
+                    if (gamblers[indexGambler].status !== configurationService.GAMBLERSTATUSMESSAGES.GAMEOVER) {
+                        if (gamblers[indexGambler].hand.score === 21 && gamblers[indexGambler].hand.length === 2) {
 
-                    if (gamblers[indexGambler].hand.score === 21 && gamblers[indexGambler].hand.length === 2) {
+                            gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.PUSH;
 
-                        gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.PUSH;
+                        }
+                        else {
 
-                    }
-                    else {
+                            gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.LOSER;
 
-                        gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.LOSER;
-
+                        }
                     }
                 }
             }
@@ -167,44 +183,71 @@
 
 
                     if (dealer.hand.score > 21) { //if the dealer is bust and a gambler is bust then the gambler loses
+                        if (gamblers[indexGambler].status !== configurationService.GAMBLERSTATUSMESSAGES.GAMEOVER) {
 
-                        if (gamblers[indexGambler].hand.score > 21) {
+                            if (gamblers[indexGambler].hand.score > 21) {
 
-                            gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.LOSER;
-                        }
-                        else {
+                                gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.LOSER;
+                            }
+                            else {
 
-                            gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.WINNER;
+                                gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.WINNER;
+                            }
                         }
 
                     }
                     else if (gamblers[indexGambler].hand.score <= 21) { // if the Gabler is not bust and dealer not bust
 
-                        if (gamblers[indexGambler].hand.score > dealer.hand.score) {
+                        if (gamblers[indexGambler].status !== configurationService.GAMBLERSTATUSMESSAGES.GAMEOVER) {
+                            if (gamblers[indexGambler].hand.score > dealer.hand.score) {
 
-                            gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.WINNER;
+                                gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.WINNER;
 
-                        }
-                        else if (gamblers[indexGambler].hand.score === dealer.hand.score) {
+                            }
+                            else if (gamblers[indexGambler].hand.score === dealer.hand.score) {
 
-                            gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.PUSH;
+                                gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.PUSH;
 
-                        }
-                        else {
+                            }
+                            else {
 
-                            gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.LOSER;
+                                gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.LOSER;
 
+                            }
                         }
                     }
                     else { // if the Gabler is bust and dealer not bust
-
-                        gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.LOSER;
+                        if (gamblers[indexGambler].status !== configurationService.GAMBLERSTATUSMESSAGES.GAMEOVER) {
+                            gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.LOSER;
+                        }
 
                     }
 
                 }
 
             }
+            
+        },
+        checkGameOver = function () {
+
+          
+            var indexGambler,
+                isGameOver = true;
+
+            for (indexGambler = 0; indexGambler < gamblers.length; indexGambler++) {
+
+                if (gamblers[indexGambler].status !== configurationService.GAMBLERSTATUSMESSAGES.GAMEOVER && gamblers[indexGambler].credits <= 0) {
+
+                    gamblers[indexGambler].status = configurationService.GAMBLERSTATUSMESSAGES.GAMEOVER;
+
+                }
+                
+                isGameOver = isGameOver && (gamblers[indexGambler].status === configurationService.GAMBLERSTATUSMESSAGES.GAMEOVER);
+                
+                
+            }
+
+            return isGameOver;
         },
         calculateCredits = function () {
 
@@ -261,7 +304,8 @@
         changeBet: changeBet,
         isDealersTurn: isDealersTurn,
         playDealer: playDealer,
-        calculateCredits: calculateCredits
+        calculateCredits: calculateCredits,
+        checkGameOver: checkGameOver
 
     };
 

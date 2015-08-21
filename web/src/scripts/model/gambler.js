@@ -6,8 +6,8 @@
 
         that.hand = new Hand(),
         that.isDealer = false;
-        that.bet = options.minBet || 1;
-        that.credits = options.startingCredits || 100,
+        that.bet = options.minBet || configurationService.DEFAULTOPTIONS.MINBET;
+        that.credits = options.startingCredits || configurationService.DEFAULTOPTIONS.STARTINGCREDITS,
         that.hasPlayed = false,
         that.status = statusMessage || configurationService.GAMBLERSTATUSMESSAGES.PLACEYOURBETS,
         that.reset = function () {

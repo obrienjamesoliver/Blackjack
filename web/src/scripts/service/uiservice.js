@@ -1,4 +1,4 @@
-﻿define(['jquery', 'boardgame', 'options', 'card'], function ($,  boardGame, options, Card) {
+﻿define(['jquery', 'boardgame', 'options', 'card', 'configurationservice', 'gamblerService'], function ($, boardGame, options, Card, configurationservice, gamblerService) {
 
     var gamblers = boardGame.gamblers,
         dealer = boardGame.dealer,
@@ -9,17 +9,18 @@
         numberOfDecks = $("#numberOfDecks"),
         addCard = function (card, indexGambler) {
 
-            if (indexGambler || indexGambler === 0) {
+            if (card) {
+                if (indexGambler || indexGambler === 0) {
 
-                $("#playerCardsArea" + indexGambler).append('<img id="' + card.faceValue + '" src="images/' + card.faceValue + '.png" class="card">');
+                    $("#playerCardsArea" + indexGambler).append('<img id="' + card.faceValue + '" src="images/' + card.faceValue + '.png" class="card">');
 
+                }
+                else {
+
+                    $("#dealerCardsArea").append('<img id="' + card.faceValue + '" src="images/' + card.faceValue + '.png" class="card">');
+
+                }
             }
-            else {
-
-                $("#dealerCardsArea").append('<img id="' + card.faceValue + '" src="images/' + card.faceValue + '.png" class="card">');
-
-            }
-
         },
         removeDealerCardBack = function () {
 
@@ -101,43 +102,57 @@
             addCard(new Card(0, '', 'cardback'));
 
         },
-        disableGamblerButtons = function (event) {
+        toggleButton = function (enable, button) {
+            
+            if (enable) {
 
-            var indexGambler = event.target.id.slice(-1);
-
-            $("#btnPlayerIncreaseBet" + indexGambler).attr('disabled', 'disabled');
-            $("#btnPlayerDecreaseBet" + indexGambler).attr('disabled', 'disabled');
-            $("#btnPlayerHit" + indexGambler).attr('disabled', 'disabled');
-            $("#btnPlayerStand" + indexGambler).attr('disabled', 'disabled');
-
-        },
-        disableGamblerBetButtons = function disableGamblerBetButtons() {
-
-            var indexGambler;
-
-            for (indexGambler = 0; indexGambler < options.numberOfPlayers; indexGambler += 1) {
-                
-                $("#btnPlayerHit" + indexGambler).removeAttr('disabled');
-                $("#btnPlayerStand" + indexGambler).removeAttr('disabled');
-                $("#btnPlayerIncreaseBet" + indexGambler).attr('disabled','disabled');
-                $("#btnPlayerDecreaseBet" + indexGambler).attr('disabled','disabled');
-                
+                button.removeAttr('disabled');
+            }
+            else {
+                if (button.attr('disabled') !== 'disabled') {
+                    button.attr('disabled', 'disabled');
+                }
             }
         },
-        enableGamblerBetButtons = function () {
+        toggleAllGamblerButtons = function () {
 
-            var indexGambler;
+            var indexGambler,
+                btnPlayerIncreaseBet,
+                btnPlayerDecreaseBet,
+                btnPlayerHit,
+                btnPlayerStand,
+                canPlay,
+                gambler;
 
             for (indexGambler = 0; indexGambler < options.numberOfPlayers; indexGambler += 1) {
-                
-                $("#btnPlayerHit" + indexGambler).attr('disabled','disabled');
-                $("#btnPlayerStand" + indexGambler).attr('disabled','disabled');
-                $("#btnPlayerIncreaseBet" + indexGambler).removeAttr('disabled');
-                $("#btnPlayerDecreaseBet" + indexGambler).removeAttr('disabled');
-                
-            }
+                gambler = gamblers[indexGambler];
+                canPlay = gamblerService.canPlay(gambler);
 
-    };
+                btnPlayerDecreaseBet = $("#btnPlayerDecreaseBet" + indexGambler);
+                btnPlayerIncreaseBet = $("#btnPlayerIncreaseBet" + indexGambler);
+                btnPlayerHit = $("#btnPlayerHit" + indexGambler);
+                btnPlayerStand = $("#btnPlayerStand" + indexGambler);
+
+                
+                toggleButton(gamblerService.canIncreaseBet(gambler), btnPlayerIncreaseBet);
+                toggleButton(gamblerService.canDecreaseBet(gambler), btnPlayerDecreaseBet);
+                toggleButton(canPlay, btnPlayerHit);
+                toggleButton(canPlay, btnPlayerStand);
+
+            }
+        },
+        toggleQuitDeal = function (enable) {
+
+            var btnPlayerDeal,
+                btnQuitGame;
+
+            btnPlayerDeal = $("#btnPlayerDeal");
+            btnQuitGame = $("#btnQuitGame");
+
+            toggleButton(enable, btnPlayerDeal);
+            toggleButton(enable, btnQuitGame);
+
+        };
 
     return {
 
@@ -150,10 +165,9 @@
         getCustomOptions: getCustomOptions,
         populateOptions: populateOptions,
         dealCards: dealCards,
-        disableGamblerButtons: disableGamblerButtons,
-        disableGamblerBetButtons: disableGamblerBetButtons,
-        enableGamblerBetButtons: enableGamblerBetButtons
-
+        toggleAllGamblerButtons: toggleAllGamblerButtons,
+        toggleButton: toggleButton,
+        toggleQuitDeal: toggleQuitDeal
     };
 
 });

@@ -19,7 +19,8 @@
             PLACEYOURBETS: 'Place your bets',
             PLAYING: 'Playing',
             PLAYED: 'Played',
-            BUST: 'Bust'
+            BUST: 'Bust',
+            GAMEOVER: 'Game Over'
         },
         NUMBEROFSHUFFLES: 10,
         SUITS: {
